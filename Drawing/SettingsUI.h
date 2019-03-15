@@ -12,6 +12,11 @@ class SettingsUI
 {
 private:
 	SettingsMgr *currentMgr;
+	Circle yellowBtn = Circle(Vector2f(75, 70), Color::Yellow);
+	Circle greenBtn = Circle(Vector2f(75, 170), Color::Green);
+	Circle blueBtn = Circle(Vector2f(75, 270), Color::Blue);
+	Circle circleBtn = Circle(Vector2f(75, 400), Color::White);
+	Square squareBtn = Square(Vector2f(75, 500), Color::White);
 public:
 	SettingsUI(SettingsMgr *mgr)
 	{
@@ -19,7 +24,26 @@ public:
 	}
 	void handleMouseUp(Vector2f mouse)
 	{
-		//if over a button, modify currentMgr
+		if (squareBtn.checkMouse(mouse))
+		{
+			currentMgr->setCurShape(SQUARE);
+		}
+		else if (circleBtn.checkMouse(mouse))
+		{
+			currentMgr->setCurShape(CIRCLE);
+		}
+		else if (yellowBtn.checkMouse(mouse))
+		{
+			currentMgr->setCurColor(Color::Yellow);
+		}
+		else if (greenBtn.checkMouse(mouse))
+		{
+			currentMgr->setCurColor(Color::Green);
+		}
+		else if (blueBtn.checkMouse(mouse))
+		{
+			currentMgr->setCurColor(Color::Blue);
+		}
 	}
 
 	void draw(RenderWindow& win)
@@ -30,7 +54,7 @@ public:
 			die("couldn't load font");
 
 		Text drawingColor("Drawing Color", font, 25);
-		drawingColor.setPosition(15, 5);
+		drawingColor.setPosition(15, 25);
 		win.draw(drawingColor);
 
 		Text drawingShape("Drawing Shape", font, 25);
@@ -39,9 +63,6 @@ public:
 
 
 		//Draw buttons
-		Circle yellowBtn(Vector2f(75, 50), Color::Yellow);
-		Circle greenBtn(Vector2f(75, 150), Color::Green);
-		Circle blueBtn(Vector2f(75, 250), Color::Blue);
 
 		if (currentMgr->getCurColor() == Color::Yellow)
 		{
@@ -61,9 +82,6 @@ public:
 			greenBtn.draw(win, false);
 			blueBtn.draw(win, true);
 		}
-
-		Circle circleBtn(Vector2f(75, 400), Color::White);
-		Square squareBtn(Vector2f(75, 500), Color::White);
 
 		if (currentMgr->getCurShape() == CIRCLE)
 		{

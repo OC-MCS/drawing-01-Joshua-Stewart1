@@ -20,14 +20,24 @@ public:
 		currentShape = startingShape;
 	}
 
-	Color getCurColor()
+	Color getCurColor() const
 	{
 		return currentColor;
 	}
 
-	ShapeEnum getCurShape()
+	ShapeEnum getCurShape() const
 	{
 		return currentShape;
+	}
+
+	void setCurColor(Color color)
+	{
+		currentColor = color;
+	}
+
+	void setCurShape(ShapeEnum shape)
+	{
+		currentShape = shape;
 	}
 
 	//read function

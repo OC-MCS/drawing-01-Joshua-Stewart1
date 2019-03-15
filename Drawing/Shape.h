@@ -65,6 +65,7 @@ public:
 		col = myShape.color;
 	}*/
 
+	virtual bool checkMouse(Vector2f mouse) = 0;
 	virtual void draw(RenderWindow& win, bool filledShape) = 0;
 	
 };
@@ -74,7 +75,7 @@ public:
 class Circle : public DrawingShape
 {
 private:
-
+	CircleShape thisCircle;
 public:
 	Circle(Vector2f loc, Color col) : DrawingShape(loc, col)
 	{
@@ -83,7 +84,6 @@ public:
 	
 	void draw(RenderWindow& win, bool filledShape)
 	{
-		CircleShape thisCircle;
 		thisCircle.setPosition(getLocation());
 		thisCircle.setRadius(RADIUS);
 		thisCircle.setOutlineThickness(2);
@@ -100,12 +100,17 @@ public:
 
 		win.draw(thisCircle);
 	}
+
+	bool checkMouse(Vector2f mouse)
+	{
+		return thisCircle.getGlobalBounds().contains(mouse);
+	}
 };
 
 class Square : public DrawingShape
 {
 private:
-
+	RectangleShape thisRectangle;
 public:
 	Square(Vector2f loc, Color col) : DrawingShape(loc, col)
 	{
@@ -114,7 +119,6 @@ public:
 
 	void draw(RenderWindow& win, bool filledShape)
 	{
-		RectangleShape thisRectangle;
 		thisRectangle.setPosition(getLocation());
 		thisRectangle.setSize(Vector2f(SIZE, SIZE));
 		thisRectangle.setOutlineThickness(2);
@@ -130,5 +134,10 @@ public:
 		}
 
 		win.draw(thisRectangle);
+	}
+
+	bool checkMouse(Vector2f mouse)
+	{
+		return thisRectangle.getGlobalBounds().contains(mouse);
 	}
 };
