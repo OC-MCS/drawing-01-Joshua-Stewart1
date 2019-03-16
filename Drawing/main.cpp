@@ -1,5 +1,5 @@
 //================================================
-// YOUR NAME GOES HERE <-----------------  
+// Joshua Stewart 
 //================================================
 #include <iostream>
 #include <fstream>
@@ -30,6 +30,7 @@ int main()
 	
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
 
+
 	while (window.isOpen()) 
 	{
 		Event event;
@@ -39,6 +40,7 @@ int main()
 			{
 				window.close();
 				// ****** Add code here to write all data to shapes file
+
 			}
 			else if (event.type == Event::MouseButtonReleased)
 			{
