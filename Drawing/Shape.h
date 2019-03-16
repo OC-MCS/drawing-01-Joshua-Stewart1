@@ -9,9 +9,10 @@ const int SIZE = 50;
 
 struct ShapeStruct
 {
-	Vector2f location; //The location of the given shape
-	Color color; //The color of the given shape
-	ShapeEnum whichShape; //The shape of the given shape
+	int locationX; //The x coordinate of the given shape
+	int locationY; //The y coordinate of the given shape
+	int color; //The color of the given shape
+	int whichShape; //The shape of the given shape
 };
 
 class DrawingShape 
@@ -67,7 +68,7 @@ public:
 	// return type: ShapeStruct
 	ShapeStruct getFileRecord()
 	{
-		ShapeStruct myShape = {location, color, CIRCLE}; //The record of the current shape
+		ShapeStruct myShape = { location.x, location.y, color.toInteger(), CIRCLE }; //The record of the current shape
 		return myShape;
 	}
 
@@ -126,7 +127,7 @@ public:
 	// return type: ShapeStruct
 	ShapeStruct getFileRecord()
 	{
-		ShapeStruct myShape = { location, color, SQUARE }; //The record of the current shape
+		ShapeStruct myShape = { location.x, location.y, color.toInteger(), SQUARE }; //The record of the current shape
 		return myShape;
 	}
 

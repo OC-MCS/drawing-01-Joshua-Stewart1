@@ -54,7 +54,30 @@ public:
 		currentShape = shape;
 	}
 
-	//read function
+	// read: load settings from a file
+	// parameters: 
+	//  myFile: the file to load form
+	// return type: void
+	void read(fstream& myFile)
+	{
+		int tempColor, tempShape; //temporary holders for settings data
 
-	//write function
+		myFile.read(reinterpret_cast<char *>(&tempColor), sizeof(tempColor));
+		myFile.read(reinterpret_cast<char *>(&tempShape), sizeof(tempShape));
+
+		currentColor = Color(tempColor);
+		currentShape = static_cast<ShapeEnum>(tempShape);
+	}
+
+	// write: write settings to a file
+	// parameters: 
+	//  myFile: the file to write to
+	// return type: void
+	void write(fstream& myFile)
+	{
+		unsigned tempColor = currentColor.toInteger();
+
+		myFile.write(reinterpret_cast<char *>(&tempColor), sizeof(tempColor));
+		myFile.write(reinterpret_cast<char *>(&currentShape), sizeof(currentShape));
+	}
 };

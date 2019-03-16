@@ -51,8 +51,8 @@ public:
 	{
 		bool onCanvas; //Holds if the mouse is in the drawable region
 		
-		if (mousePos.x > position.x + RADIUS && mousePos.x < position.x + CANVAS_WIDTH - RADIUS
-			&& mousePos.y > position.y + RADIUS && mousePos.y < position.y + CANVAS_HEIGHT - RADIUS)
+		if (mousePos.x > position.x && mousePos.x < position.x + CANVAS_WIDTH - SIZE
+			&& mousePos.y > position.y && mousePos.y < position.y + CANVAS_HEIGHT - SIZE)
 		{
 			onCanvas = true;
 		}
